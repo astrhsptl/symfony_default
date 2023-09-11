@@ -9,9 +9,10 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 
-
-class UserLoginRequest
+class UserRegisterRequest
 {
+    #[NotBlank]
+    private string $username;
  
     #[NotBlank]
     #[Email]
@@ -19,6 +20,18 @@ class UserLoginRequest
 
     #[NotBlank]
     private string $password;
+
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $username;
+    }
 
     public function getEmail(): string
     {
